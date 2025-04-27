@@ -83,7 +83,7 @@ int main() {
                     t0 = clock();
                     sortArray(arr);
                     t1 = clock();
-                    endMem = getValue();
+                    endMem = curMemUsage;
                     execTime = (double(t1-t0)/CLOCKS_PER_SEC);
                     totalMemUse = endMem-beginMem;
                     measure << filename << " std::sort " << execTime << ' ' << totalMemUse << "\n";
@@ -94,7 +94,8 @@ int main() {
                     t0 = clock();
                     mergeSort(copy1);
                     t1 = clock();
-                    endMem = getValue();
+                    endMem = curMemUsage;
+                    totalMemUse = endMem-beginMem;
                     execTime = (double(t1-t0)/CLOCKS_PER_SEC);
                     measure << filename << " MergeSort " << execTime << ' ' << totalMemUse << "\n";
                     std::cout << "MergeSort ejecutado exitosamente para "+filename+"\n";
@@ -104,7 +105,8 @@ int main() {
                     t0 = clock();
                     QuickSort(copy2, 0, N[n]-1);
                     t1 = clock();
-                    endMem = getValue();
+                    endMem = curMemUsage;
+                    totalMemUse = endMem-beginMem;
                     execTime = (double(t1-t0)/CLOCKS_PER_SEC);
                     measure << filename << " QuickSort " << execTime << ' ' << totalMemUse << "\n";
                     std::cout << "QuickSort ejecutado exitosamente para "+filename+"\n";
@@ -115,7 +117,8 @@ int main() {
                         t0 = clock();
                         selectionSort(copy3);
                         t1 = clock();
-                        endMem = getValue();
+                        endMem = curMemUsage;
+                        totalMemUse = endMem-beginMem;
                         execTime = (double(t1-t0)/CLOCKS_PER_SEC);
                         measure << filename << " SelectionSort " << execTime << ' ' << totalMemUse << "\n";
                         std::cout << "SelectionSort ejecutado exitosamente para "+filename+"\n";

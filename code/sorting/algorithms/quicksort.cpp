@@ -1,4 +1,5 @@
 #include <vector>
+#include "memusage.cpp"
 
 /*
     Ambas funciones han sido extraídas del PPT #6
@@ -34,4 +35,5 @@ void QuickSort(std::vector<int> &A, int i, int d) {
         QuickSort (A, i, k-1);
         QuickSort(A, k+1, d);
     }
+    curMemUsage = getValue();
 }

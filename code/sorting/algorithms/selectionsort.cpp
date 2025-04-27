@@ -1,4 +1,5 @@
 #include <vector>
+#include "memusage.cpp"
 
 std::vector<int> selectionSort(std::vector<int>& arr){
     for (int i=0;i<arr.size();i++) {
@@ -12,5 +13,6 @@ std::vector<int> selectionSort(std::vector<int>& arr){
         }
         std::swap(arr[i], arr[lowPos]);
     }
+    curMemUsage = getValue();
     return arr;
 }

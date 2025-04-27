@@ -1,9 +1,10 @@
 #include <vector>
+#include "memusage.cpp"
 
 void mergeAux(std::vector<int>& arr, int posL, int posR) {
     int size = posR-posL;
     
-    if (size<=1) return;
+    if (size<=1) {return;}
     
     int left = posL;
     int mid = left+(size/2);
