@@ -1,24 +1,20 @@
 #include <vector>
 
 /*
-    Este algoritmo ha sido extraido del PPT 5 Parte 2
-    del ramo de INF-221, semestre 2025-1, y modificado
-    para trabajar con vectores de vectores de enteros
-    en vez de punteros a punteros a enteros
+    Esta implementación del algoritmo naive ha sido tomada del siguiente sitio:
+    https://medium.com/swlh/strassens-matrix-multiplication-algorithm-936f42c2b344
+    Strassen Matrix Multiplication | C++ | The Startup, Saahil Mahato, Medium, consultado el 27 de abril de 2025
 */
 
-std::vector<std::vector<int>> matrixMult(std::vector<std::vector<int>> &M1, std::vector<std::vector<int>> &M2, int n) {
-    // Se crea la matriz M de n x n
-    std::vector<std::vector<int>> M = std::vector<std::vector<int>>(n);
-    for (int i=0;i<n;++i)
-        M[i] = std::vector<int>(n);
-    // Cálculo de cada casilla M[i][j]
-    for (int i=0;i<n;++i){
-        for (int j=0;j<n;++j) {
-            M[i][j] = 0;
-            for (int k=0;k<n;++k)
-                M[i][j] += M1[i][k]*M[k][j];
+int** matrixMult(int** A, int** B, int n) {
+    int** C = new int*[n];
+    for(int i=0; i<n; i++) {
+        C[i] = new int[n];
+        for(int j=0; j<n; j++) {
+            C[i][j] = 0;
+            for(int k=0; k<n; k++)
+                C[i][j] += A[i][k] * B[k][j];
         }
     }
-    return M;
+    return C;
 }
