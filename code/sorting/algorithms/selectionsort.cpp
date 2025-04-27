@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <vector>
 
 std::vector<int> selectionSort(std::vector<int>& arr){

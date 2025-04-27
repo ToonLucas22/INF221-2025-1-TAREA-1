@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <vector>
 
 void mergeAux(std::vector<int>& arr, int posL, int posR) {
