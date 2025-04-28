@@ -108,3 +108,5 @@ for i in range(4):
     fig.tight_layout()
 
     plt.savefig('../data/plots/'+str(n)+'_'+doms[j]+'.png')
+
+measures.close()
