@@ -17,6 +17,7 @@ def autolabel(rects):
 sorts = ['SelectionSort', 'MergeSort', 'QuickSort', 'std::sort']
 sizes = [10, 1000, 100000, 10000000]
 indices = [0, 73, 145, 217, 271]
+doms = ['D1', 'D7']
 
 measures = open("../data/measurements/a.txt")
 
@@ -74,3 +75,36 @@ for i in range(4):
       avgTimeDes7[j] /= cntDes7[j]
     if (cntRnd7[j] != 0)
       avgTimeRnd7[j] /= cntRnd7[j]
+    
+  # El siguiente código es mayormente tomado del sitio
+  # https://facialix.com/tutorial-creacion-de-graficas-en-python-usando-matplotlib/
+
+  x = np.arrange(len(sorts))
+  width = 0.6
+  
+  for j in range(2):
+    fig, ax = plt.subplots()
+    if j==0:
+      toUseA = avgTimeAsc1
+      toUseD = avgTimeDes1
+      toUseR = avgTimeRnd1
+    else:
+      toUseA = avgTimeAsc7
+      toUseD = avgTimeDes7
+      toUseR = avgTimeRnd7
+    rectsAsc = ax.bar(x - width, toUseA, width, label='Ascendente')
+    rectsDes = ax.bar(x,         toUseD, width, label='Descendente')
+    rectsRnd = ax.bar(x + width, toUseR, width, label='Aleatorio')
+
+    ax.set_ylabel('Tiempo de ejecución (s)')
+    ax.set_title('Tiempo de ejecución de algoritmos de ordenamiento en '+doms[j])
+    ax.set_xticks(x)
+    ax.set_xticklabels(sorts)
+    ax.legend()
+
+    autolabel(rectsAsc)
+    autolabel(rectsDes)
+    autolabel(rectsRnd)
+    fig.tight_layout()
+
+    plt.savefig('../data/plots/'+str(n)+'_'+doms[j]+'.png')
