@@ -8,7 +8,7 @@ def autolabel(rects):
     """Funcion para agregar una etiqueta con el valor en cada barra"""
     for rect in rects:
         height = rect.get_height()
-        ax.annotate('{}'.format(height),
+        ax.annotate('{}'.format(round(height,2)),
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
@@ -32,13 +32,13 @@ for i in range(4):
   avgTimeDes1 = [0]*4
   avgTimeRnd1 = [0]*4
   avgTimeAsc7 = [0]*4
-  avgTimeDec7 = [0]*4
+  avgTimeDes7 = [0]*4
   avgTimeRnd7 = [0]*4
   n = sizes[i]
   for j in range(indices[i], indices[i+1]):
     line = measures.readline().strip().split()
-    modes = filename[0].strip(".txt").split("_")
-    sortMode = sorts.find(line[1])
+    modes = line[0].strip(".txt").split("_")
+    sortMode = sorts.index(line[1])
     type = modes[1]
     d = modes[2]
     eTime = float(line[2])
@@ -71,16 +71,16 @@ for i in range(4):
       avgTimeRnd1[j] /= cntRnd1[j]
     if (cntAsc7[j] != 0):
       avgTimeAsc7[j] /= cntAsc7[j]
-    if (cntDes7[j] != 0)
+    if (cntDes7[j] != 0):
       avgTimeDes7[j] /= cntDes7[j]
-    if (cntRnd7[j] != 0)
+    if (cntRnd7[j] != 0):
       avgTimeRnd7[j] /= cntRnd7[j]
     
   # El siguiente código es mayormente tomado del sitio
   # https://facialix.com/tutorial-creacion-de-graficas-en-python-usando-matplotlib/
 
-  x = np.arrange(len(sorts))
-  width = 0.6
+  x = np.arange(len(sorts))
+  width = 0.2
   
   for j in range(2):
     fig, ax = plt.subplots()

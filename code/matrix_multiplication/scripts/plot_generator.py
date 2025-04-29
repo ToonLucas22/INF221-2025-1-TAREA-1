@@ -1,4 +1,3 @@
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -8,7 +7,7 @@ def autolabel(rects):
     """Funcion para agregar una etiqueta con el valor en cada barra"""
     for rect in rects:
         height = rect.get_height()
-        ax.annotate('{}'.format(height),
+        ax.annotate('{}'.format(round(height, 3)),
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
@@ -17,7 +16,7 @@ def autolabel(rects):
 mults = ['Strassen', 'Naive']
 sizes = [16, 64, 256, 1024]
 indices = [1, 37, 73, 109, 145]
-doms = ['D1', 'D10']
+doms = ['D0', 'D10']
 
 measures = open("../data/measurements/a.txt")
 
@@ -37,50 +36,50 @@ for i in range(4):
   n = sizes[i]
   for j in range(indices[i], indices[i+1]):
     line = measures.readline().strip().split()
-    modes = filename[0].strip(".txt").split("_")
-    multMode = mults.find(line[1])
+    modes = line[0].strip(".txt").split("_")
+    multMode = mults.index(line[1])
     type = modes[1]
     d = modes[2]
     eTime = float(line[2])
-    if d == "D1":
+    if d == "D0":
       if type == 'dispersa':
         cntDsp1[multMode] += 1
-        avgTimeDgn1[sortMode] += eTime
+        avgTimeDsp1[multMode] += eTime
       elif type == 'diagonal':
         cntDgn1[multMode] += 1
-        avgTimeDgn1[sortMode] += eTime
+        avgTimeDgn1[multMode] += eTime
       else:
         cntDen1[multMode] += 1
-        avgTimeDen1[sortMode] += eTime
+        avgTimeDen1[multMode] += eTime
     else:
       if type == 'dispersa':
         cntDsp10[multMode] += 1
-        avgTimeDsp10[sortMode] += eTime
+        avgTimeDsp10[multMode] += eTime
       elif type == 'diagonal':
         cntDgn10[multMode] += 1
-        avgTimeDgn10[sortMode] += eTime
+        avgTimeDgn10[multMode] += eTime
       else:
         cntDen10[multMode] += 1
-        avgTimeDen10[sortMode] += eTime
+        avgTimeDen10[multMode] += eTime
   for j in range(2):
     if (cntDsp1[j] != 0):
       avgTimeDsp1[j] /= cntDsp1[j]
     if (cntDgn1[j] != 0):
       avgTimeDgn1[j] /= cntDgn1[j]
-    if (cntRnd1[j] != 0):
+    if (cntDen1[j] != 0):
       avgTimeDen1[j] /= cntDen1[j]
     if (cntDsp10[j] != 0):
       avgTimeDsp10[j] /= cntDsp10[j]
-    if (cntDgn10[j] != 0)
+    if (cntDgn10[j] != 0):
       avgTimeDgn10[j] /= cntDgn10[j]
-    if (cntDen10[j] != 0)
+    if (cntDen10[j] != 0):
       avgTimeDen10[j] /= cntDen10[j]
     
   # El siguiente código es mayormente tomado del sitio
   # https://facialix.com/tutorial-creacion-de-graficas-en-python-usando-matplotlib/
 
-  x = np.arrange(len(sorts))
-  width = 0.6
+  x = np.arange(len(mults))
+  width = 0.2
   
   for j in range(2):
     fig, ax = plt.subplots()
@@ -99,7 +98,7 @@ for i in range(4):
     ax.set_ylabel('Tiempo de ejecución (s)')
     ax.set_title('Tiempo de ejecución de multiplicación de matrices en '+doms[j])
     ax.set_xticks(x)
-    ax.set_xticklabels(sorts)
+    ax.set_xticklabels(mults)
     ax.legend()
 
     autolabel(rectsAsc)
