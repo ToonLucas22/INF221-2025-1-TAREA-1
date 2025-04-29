@@ -1,26 +1,7 @@
-\begin{mdframed}
-    \textbf{La extensión máxima para esta sección es de 1 página.}
-\end{mdframed}
+El campo de \textbf{Análisis y Diseño de algoritmos en Ciencias de la Computación} es un campo que busca analizar y diseñar algoritmos para resolver varios problemas reales cotidianos e industriales como el ordenamiento, la matemática, el recorrido de mapas y laberintos, multiplicación de matrices, etc. y hacerlos de las formas más eficientes posibles.
 
-La introducción de este tipo de informes o reportes, tiene como objetivo principal \textbf{contextualizar el problema que se va a analizar}, proporcionando al lector la información necesaria para entender la relevancia del mismo. 
+Se han creado y analizado varios algoritmos para estos problemas cuya complejidad usualmente evoluciona según aumenta el tamaño de la entrada. Pero, \textbf{¿cómo se manifiestan la complejidades de tales algoritmos en la práctica al verse implementados en código? ¿Cómo se comparan para distintos tamaños de entrada al ejecutarse?}
 
-Es fundamental que en esta sección se presenten los antecedentes del problema, destacando investigaciones previas o principios teóricos que sirvan como base para los análisis posteriores. Además, deben explicarse los objetivos del informe, que pueden incluir la evaluación de un algoritmo, la comparación de métodos o la validación de resultados experimentales.
+Recordar que para el análisis de complejidad de algoritmos existen las notaciones $O(f(n))$ y $\Omega(f(n))$, las cuales describen las cotas superiores e inferiores de complejidades temporal y/o espacial de algún algoritmo $f$, siendo éste un algoritmo cualquiera que resuelve un problema particular $A$. Sin embargo, esto \textit{no nos dice nada} sobre el tiempo de ejecución o utilización de memoria brutos de un algoritmo, sólo el cómo evoluciona. Entonces, nuestra hipótesis es que es perfectamente posible que un algoritmo $f$ con peor complejidad temporal o espacial que otro algoritmo $g$ (siendo $g$ un algoritmo que resuelve el mismo problema que $f$) pueda ser más rápido que éste último hasta algún valor $k \in \mathbb{N}$.
 
-Aunque la estructura y el enfoque siguen principios de trabajos académicos, se debe recordar que estos informes no son publicaciones científicas formales, sino trabajos de pregrado. Por lo tanto, se busca un enfoque claro y directo, que permita al lector comprender la naturaleza del problema y los objetivos del análisis, sin entrar en detalles excesivos. 
-
-
-Introduction Checklist de \citetitle{GoodScientificPaper} \cite{GoodScientificPaper}, adaptada a nuestro contexto:
-
-\begin{itemize}
-\item Indique el \textbf{campo del trabajo} (Análisis y Diseño de algoritmos en Ciencias de la Computación), por qué este campo es importante y qué se ha hecho ya en este área, con las \textbf{citas} adecuadas de la literatura académica o fuentes relevantes.
-\item Identifique una \textbf{brecha} en el conocimiento, un desafío práctico, o plantee una \textbf{pregunta} relacionada con la eficiencia, complejidad o aplicabilidad de un algoritmo particular.
-\item Resuma el propósito del informe e introduzca el análisis o experimento, dejando claro qué se está investigando o comparando, e indique \textbf{qué es novedoso} o por qué es significativo en el contexto de un curso de pregrado.
-\item Evite; repetir el resumen; proporcionar información innecesaria o fuera del alcance de la materia (limítese al análisis de algoritmos o conceptos de complejidad); exagerar la importancia del trabajo (recuerde que se trata de un informe de pregrado); afirmar novedad sin una comparación adecuada con lo enseñado en clase o la bibliografía recomendada.
-\end{itemize}
-
-
-
-\begin{mdframed}
-Recuerde que este es su trabajo, y sólo usted puede expresar con precisión lo que ha aprendido y quiere transmitir. Si lo hace bien, su introducción será más significativa y valiosa que cualquier texto automatizado. ¡Confíe en sus habilidades, y verá que puede hacer un mejor trabajo que cualquier herramienta que automatiza la generación de texto!
-\end{mdframed}
-
+Por lo anterior, el propósito de este informe es probar la hipótesis recién dada, y además ayudarnos a entender mejor los tiempos de ejecución y utilizaciones de memoria de varios algoritmos, y ver la practicalidad de éstos para distintos tamaños de $n$. Este informe se enfocará en cuatro algoritmos de ordenamiento por comparación (std::sort, Selection Sort, Merge Sort, y Quick Sort) y dos algoritmos de multiplicación de matrices cuadradas (Naive y Strassen).
