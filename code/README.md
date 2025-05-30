@@ -7,6 +7,7 @@
 Para compilar y correr el programa principal, se debe invocar la terminal desde la carpeta de /matrix_multiplication/ y escribir los siguientes comandos:
 
   make
+  
   make run
 
 Una vez hecho esto, se empezarán a correr ambos algoritmos de multiplicación, sus output serán guardados en /matrix_multiplication/data/matrix_output/ y sus mediciones de ejecución en /matrix_multiplication/data/measurements/.
@@ -22,6 +23,7 @@ Además, en caso de ser necesario regenerar los input, se pueden regenerar las m
 Para compilar y correr el programa principal, se debe invocar la terminal desde la carpeta de /matrix_multiplication/ y escribir los siguientes comandos:
 
   make
+  
   make run
 
 Una vez hecho esto, se empezarán a correr los cuatro algoritmos de ordenamiento, sus output serán guardados en /sorting/data/array_output/ y sus mediciones de ejecución en /sorting/data/measurements/.
